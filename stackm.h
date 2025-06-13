@@ -1,0 +1,13 @@
+//mstack.h
+#include<iostream>
+#include<vector>
+using namespace std;
+void push(string val);
+string pop();
+bool emp();
+string gett();
+bool operd(char d);
+bool opert(char d);
+bool corr(string& expr);
+vector<string> convinst(string& expr);
+Add comment

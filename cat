@@ -3,9 +3,9 @@ usingnamespace std;
 int main()
 {
   setlocale(LC_ALL,"Russian");
-  //  /\_/\
+ //  /\_/\
   //( o.o )
-  //  > ^ <
+ //  > ^ <
   cout<<"мяу"<<endl;
   return 0;
 }

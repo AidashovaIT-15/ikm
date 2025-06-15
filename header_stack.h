@@ -8,5 +8,5 @@ bool emp();//проверка на пустоту
 string gett();
 bool operd(char d);//проверка на операнд
 bool opert(char d);//проверка на оператор
-bool corr(string& expr);//проверка на корректность
-vector<string> convinst(string& expr);
+bool corr(string& expr);//проверка на корректность выражения
+vector<string> convinst(string& expr);//преобразование выражения

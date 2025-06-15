@@ -2,8 +2,8 @@
 #include<iostream>
 #include<vector>
 using namespace std;
-void push(string val);//добавление 
-string pop();
+void push(string val);//добавление элемента 
+string pop();//извлечение элемента
 bool emp();//проверка на пустоту
 string gett();
 bool operd(char d);//проверка на операнд

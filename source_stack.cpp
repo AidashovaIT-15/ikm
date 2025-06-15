@@ -59,13 +59,13 @@ bool opert(char d)//проверка на оператор
 bool corr(string& expr)//проверка корректности выражения 
 {
     int operc = 0;
-    for (char c : expr)
+    for (char d : expr)
     {
-        if (operd(c))
+        if (operd(d))
         {
             operc++;
         }
-        else if (opert(c))
+        else if (opert(d))
         {
             if (operc < 2)
             {
@@ -92,23 +92,23 @@ vector<string> convinst(string& expr)//преобразование выраже
         }
         else if (opert(d))
         {
-            string op2 = stack.pop();//два операнда из стека
-            string op1 = stack.pop();
+            string oper2 = stack.pop();//два операнда из стека
+            string oper1 = stack.pop();
             string temp = stack.t();//новая переменная
             inst.push_back(" LD " + op1);//инструкции
             switch (d)
             {
             case '+':
-                inst.push_back(" AD " + op2);
+                inst.push_back(" AD " + oper2);
                 break;
             case '-':
-                inst.push_back(" SB " + op2);
+                inst.push_back(" SB " + oper2);
                 break;
             case '*':
-                inst.push_back(" ML " + op2);
+                inst.push_back(" ML " + oper2);
                 break;
             case '/':
-                inst.push_back(" DV " + op2);
+                inst.push_back(" DV " + oper2);
                 break;
             }
             inst.push_back(" ST " + temp);

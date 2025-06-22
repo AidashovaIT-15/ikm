@@ -1,33 +1,54 @@
 //stack_ikm.cpp
-#include<iostream>
-#include<vector>
-#include<string>
-#include "mstack.h"
+#include <iostream>
+#include <vector>
+#include <string>
+#include <stdexcept>
+#include "stack.cpp"
 using namespace std;
-int main()
+int main() 
 {
     setlocale(LC_ALL, "Russian");
-    cout << " Преобразование постфиксных выражений ";
-    cout << " Введите выражение(пример: ABC*+DE-/): ";
-    string inpexp;
-    getline(cin, inpexp);
-    string expr;//удаление пробелов
-    for (char d : inpexp)
+    cout << " Введите выражение(пример:ABC*+DE-/) " << endl;
+    cout << " Используйте однобуквенные переменные и операторы +, -, *, / " << endl;
+    while (true) 
     {
-        if (d != ' ') expr += d;
+        cout << " - ";
+        string inp;
+        getline(cin, inp);
+        if (inp == " exit ") 
+        {
+            break;
+        }
+        remsp(inp);
+        if (inp.empty())
+        {
+            cout << " Ошибка: пустой ввод " << endl;
+            continue;
+        }
+        if (!corr(inp)) 
+        {
+            cout << " Ошибка: некорректное выражение " << endl;
+            cout << " Убедитесь, что: " << endl;
+            cout << " 1. Вы используете буквы и операторы:(A-Z),(a-z), (+, -, *, /) " << endl;
+            cout << " 2. Операторов на 1 меньше операндов " << endl;
+            continue;
+        }
+        try 
+        {
+            vector<string> instructions = geninstr(inp);
+            cout << " Инструкции: ";
+            for (string& instr : instructions) 
+            {
+                cout << instr << endl;
+            }
+            cout << endl;
+
+        }
+        catch (exception& e) 
+        {
+            cout << " Ошибка при обработке выражения: " << e.what() << endl;
+        }
     }
-    if (!corr(expr))//проверка на корректность 
-    {
-        cout << " Ошибка! Некорректное выражение ";
-        cout << " Используйте только буквы (A-Z,a-z) и операторы (+ - * /) ";
-        cout << " Пример: AB+C* или ABC*+DE-/ ";
-        return 1;
-    }
-    vector<string> inst = convinst(expr);//преобразование выражения
-    cout << " Инструкции: ";
-    for (string& instr : inst)
-    {
-        cout << instr << endl;
-    }
+    cout << " Программа завершена. ";
     return 0;
 }
